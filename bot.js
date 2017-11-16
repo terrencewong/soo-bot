@@ -9,12 +9,12 @@ function randomInt(max) {
 
 var options = [];
 
-client.on('message', msg => {
+client.on('message', (msg) => {
   if ((msg.content === 'soo') || (msg.content === '!roll')) {
     if(options.length != 0) {
-      msg.reply(options[randomInt(optionsList.length-1)]);
+      msg.channel.send(options[randomInt(optionsList.length-1)]);
     }else{
-      msg.reply('No games to choose from');
+      msg.channel.send('No games to choose from');
     }
   }else if (msg.content.startsWith('!add')) {
     options.push(msg.content.slice(5).trim());
@@ -23,10 +23,10 @@ client.on('message', msg => {
   }else if (msg.content === '!list'){
     if(options.length != 0){
       for (var i = 0; i < options.length; i++){
-        msg.reply(optionsList[i])
+        msg.channel.send(optionsList[i])
       }
     }else{
-      msg.reply('Nothing to list');
+      msg.channel.send('Nothing to list');
     }
   }
 });
