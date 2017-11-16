@@ -2,16 +2,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('ready', () => {
-    client.user.setGame('https://git.io/d.js-heroku');
+client.on('message', message => {
+  if (message.content.startsWith('ping!')) {
+    message.reply('pong!');
+  }
 });
 
-client.on('message', msg => {
-    if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
-    const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
-    const args = msg.content.split(' ').slice(1).join(' ');
-    if (command === 'guide') return msg.channel.send('https://git.io/d.js-heroku');
-    else if (command === 'invite') return msg.channel.send(process.env.INVITE);
+client.on('ready', () => {
+   console.log('I am ready!'); 
 });
 
 client.login(process.env.TOKEN);
