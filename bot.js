@@ -2,14 +2,39 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('message', message => {
-  if (message.content.startsWith('ping!')) {
-    message.reply('pong!');
+function randomInt(max) {
+   return Math.floor(Math.random() * (max + 1));
+}
+
+
+var options = [];
+
+client.on('message', async msg => {
+  const args  message.content.slice("!").trim().split(/ )
+  if (msg.content === 'soo' || msg.content === '!roll')) {
+    if(options.length != 0) {
+      msg.reply(options[randomInt(optionsList.length-1)]);
+    }else{
+      msg.reply('No games to choose from');
+    }
+  }else if (msg.content.startsWith('!add')) {
+    options.push(msg.content.slice(5).trim());
+  }else if (msg.content.startsWith('!rm')) {
+    //do nothing
+  }else if (msg.content === '!list'){
+    if(options.length != 0){
+      for (var i = 0; i < options.length; i++){
+        msg.reply(optionsList[i])
+      }
+    }else{
+      msg.reply('Nothing to list');
+    }
   }
 });
 
+
 client.on('ready', () => {
-   console.log('I am ready!'); 
+   console.log('I am ready!');
 });
 
 client.login(process.env.TOKEN);
