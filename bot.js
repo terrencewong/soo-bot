@@ -12,18 +12,18 @@ var options = [];
 client.on('message', (msg) => {
   if ((msg.content === 'soo') || (msg.content === '!roll')) {
     if(options.length != 0) {
-      msg.channel.send(options[randomInt(optionsList.length-1)]);
+      msg.channel.send(options[randomInt(options.length-1)]);
     }else{
       msg.channel.send('No games to choose from');
     }
-  }else if (msg.content.startsWith('!add')) {
+  }else if (msg.content === '!add') {
     options.push(msg.content.slice(5).trim());
   }else if (msg.content.startsWith('!rm')) {
     //do nothing
   }else if (msg.content === '!list'){
     if(options.length != 0){
       for (var i = 0; i < options.length; i++){
-        msg.channel.send(optionsList[i])
+        msg.channel.send(options[i])
       }
     }else{
       msg.channel.send('Nothing to list');
