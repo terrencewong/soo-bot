@@ -16,7 +16,7 @@ client.on('message', (msg) => {
     }else{
       msg.channel.send('No games to choose from');
     }
-  }else if (msg.content === '!add') {
+  }else if (msg.content.startsWith('!add')) {
     options.push(msg.content.slice(5).trim());
   }else if (msg.content.startsWith('!rm')) {
     //do nothing
