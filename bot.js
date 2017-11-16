@@ -9,7 +9,7 @@ function randomInt(max) {
 
 var options = [];
 
-client.on('message', (msg) => {
+client.on('msg', (msg) => {
   if ((msg.content === 'soo') || (msg.content === '!roll')) {
     if(options.length != 0) {
       msg.channel.send(options[randomInt(optionsList.length-1)]);
