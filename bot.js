@@ -28,6 +28,8 @@ client.on('message', (msg) => {
     }else{
       msg.channel.send('Nothing to list');
     }
+  }else if (msg.content === '!help'){
+    msg.channel.send('Commands:\n!list - list all options\n!add - add game\n!roll - roll');
   }
 });
 
