@@ -6,8 +6,15 @@ function randomInt(max) {
    return Math.floor(Math.random() * (max + 1));
 }
 
-
 var options = [];
+
+function check(temp){
+  if(options.indexOf(temp) == -1){
+    return 1;
+  }else{
+    return 0;
+  }
+}
 
 client.on('message', (msg) => {
   if ((msg.content === 'soo') || (msg.content === '!roll')) {
@@ -17,9 +24,26 @@ client.on('message', (msg) => {
       msg.channel.send('No games to choose from');
     }
   }else if (msg.content.startsWith('!add')) {
-    options.push(msg.content.slice(5).trim());
+    var temp = msg.content.slice(5).trim();
+    options.push(temp);
+    if(check(temp) == 1){
+      msg.channel.send('!add error');
+    }else{
+      msg.channel.send('added.');
+    }
   }else if (msg.content.startsWith('!rm')) {
-    //do nothing
+    var content = msg.content.slice(4).trim();
+    if(check(content) == 1){
+      msg.channel.send('Argument invalid');
+    }else{
+      var num = options.findIndex(content);
+      options.splice(num);
+      if(check(content) == 0){
+        msg.channel.send('!rm failed');
+      }else{
+        msg.channel.send('removed.');
+      }
+    }
   }else if (msg.content === '!list'){
     if(options.length != 0){
       for (var i = 0; i < options.length; i++){
@@ -29,7 +53,7 @@ client.on('message', (msg) => {
       msg.channel.send('Nothing to list');
     }
   }else if (msg.content === '!help'){
-    msg.channel.send('Commands:\n!list - list all options\n!add - add game\n!roll - roll');
+    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option');
   }
 });
 
