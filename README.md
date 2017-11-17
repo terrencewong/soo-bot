@@ -15,5 +15,6 @@ Commands for this bot follow this structure: `!<command> [argument]`.
 |---------|-------------|
 | `!roll / soo` | Outputs a game from the list randomly |
 | `!add game` | Adds a game to the list |
-| `!rm game` | Removes a game from the list|
+| `!rm game` | Removes a game from the list |
+| `!list` | Outputs all games in the list |
 | `!help` | Displays usage instructions. |
