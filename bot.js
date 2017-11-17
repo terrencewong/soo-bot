@@ -36,8 +36,8 @@ client.on('message', (msg) => {
     if(check(content) == 1){
       msg.channel.send('Argument invalid');
     }else{
-      var num = options.indexOf(content,1);
-      options.splice(num);
+      var num = options.indexOf(content);
+      options.splice(num, 1);
       if(check(content) == 0){
         msg.channel.send('!rm failed');
       }else{
