@@ -59,7 +59,7 @@ client.on('message', (msg) => {
   }
    
   if(msg.content === '!8'){
-    msg.channel.send(8ballOptions[randomInt(8ballOptions.length-1)]);
+    msg.channel.send(8ballOptions[randomInt(20)]);
   }
 });
 
