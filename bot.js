@@ -55,8 +55,16 @@ client.on('message', (msg) => {
   }else if (msg.content === '!help'){
     msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option');
   }
+   
+  if(msg.content === '!decision'){
+    var ans = randomInt(1);
+    if(ans == 1){
+      msg.channel.send('yes');
+    }else{
+      msg.channel.send('no');
+    }
+  }
 });
-
 
 client.on('ready', () => {
    console.log('I am ready!');
