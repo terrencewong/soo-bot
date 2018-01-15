@@ -55,10 +55,10 @@ client.on('message', (msg) => {
       msg.channel.send('Nothing to list');
     }
   }else if (msg.content === '!help'){
-    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!8 - 8ball');
+    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!? - responds to query');
   }
    
-  if(msg.content === '!8'){
+  if(msg.content === '?'){
     msg.channel.send(eightBallOptions[randomInt(eightBallOptions.length-1)]);
   }
 });
