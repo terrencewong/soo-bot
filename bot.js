@@ -8,6 +8,8 @@ function randomInt(max) {
 
 var options = [];
 
+var 8ballOptions= ['It is certain','It is decidedly so','Without a doubt','Yes definitely','You may rely on it','As I see it, yes','Most likely','Outlook good','Yes','Signs point to yes','Reply hazy try again','Ask again later','Better not tell you now','Cannot predict now','Concentrate and ask again','Do not count on it','My reply is no','My sources say no','Outlook not so good','Very doubtful']
+
 function check(temp){
   if(options.indexOf(temp) == -1){
     return 1;
@@ -53,16 +55,11 @@ client.on('message', (msg) => {
       msg.channel.send('Nothing to list');
     }
   }else if (msg.content === '!help'){
-    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!decision - yes/no questions');
+    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!8 - 8ball');
   }
    
-  if(msg.content === '!decision'){
-    var ans = randomInt(1);
-    if(ans == 1){
-      msg.channel.send('yes');
-    }else{
-      msg.channel.send('no');
-    }
+  if(msg.content === '!8'){
+    msg.channel.send(8ballOptions[randomInt(8ballOptions.length-1)])
   }
 });
 
