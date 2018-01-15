@@ -53,7 +53,7 @@ client.on('message', (msg) => {
       msg.channel.send('Nothing to list');
     }
   }else if (msg.content === '!help'){
-    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option');
+    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!decision - yes/no questions');
   }
    
   if(msg.content === '!decision'){
