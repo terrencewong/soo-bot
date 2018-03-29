@@ -2,6 +2,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const request = require('request');
+
+request('http://api.tvmaze.com/schedule?country=US', { json: true }, (err, res, body) => {
+  if (err) { return msg.channel.send(err); }
+  msg.channel.send(body.url);
+  msg.channel.send(body.explanation);
+});
+
 function randomInt(max) {
    return Math.floor(Math.random() * (max + 1));
 }
@@ -55,10 +63,10 @@ client.on('message', (msg) => {
       msg.channel.send('Nothing to list');
     }
   }else if (msg.content === '!help'){
-    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!? - responds to query');
+    msg.channel.send('Commands:\n\t!list - list all options\n\t!add - add game\n\t!roll/soo - rolls a random game\n\t!rm - removes entered option\n\t!m8 - responds to query');
   }
    
-  if(msg.content === '?'){
+  if(msg.content === '!m8'){
     msg.channel.send(eightBallOptions[randomInt(eightBallOptions.length-1)]);
   }
 });
